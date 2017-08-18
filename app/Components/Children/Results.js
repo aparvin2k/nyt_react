@@ -8,10 +8,10 @@ class Results extends React.Component {
 		this.state = {
 			articles: []
 		}
-		this.getSaved = this.getSaved.bind(this);
 		this.renderArticles = this.renderArticles.bind(this);
 	}
 	componentWillReceiveProps(nextProps) {
+		console.log("getting articles");
 		Helpers.getArticles(nextProps.topic, nextProps.startYear, nextProps.endYear).then((res) => {
 			this.setState({articles: res.data.response.docs});
 		});
@@ -32,7 +32,18 @@ class Results extends React.Component {
 						    			<h3 className="panel-title">{article.title}</h3>
 						  			</div>
 						  			<div className="panel-body">
-						        	<p>{article.body}</p>
+						        		<p>{article.body}</p>
+						        		<h4 id="resultListing">
+						    				<a href={article.web_url} target="_blank">{article.headline.main}</a>
+												<br />
+												<button
+							    				id="saveButton"
+							    				className="btn btn-primary"
+							    				onClick={this.saveArticle}
+							    			>
+							    				Save
+							    			</button>
+	    								</h4>
 						        	</div>
 						      </div>
 						    ))}

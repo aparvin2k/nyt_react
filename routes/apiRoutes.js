@@ -3,7 +3,7 @@ var express = require("express");
 
 var app = express()
 
-app.get("/api/saved" , (req,res) => {
+app.get("/saved" , (req,res) => {
 
     console.log("Get")
 
@@ -19,7 +19,7 @@ app.get("/api/saved" , (req,res) => {
     });
 });
 
-app.post("/api/saved" , (req,res) => {
+app.post("/saved" , (req,res) => {
 
     var newArticle = new Articles(req.body)
 
@@ -33,7 +33,7 @@ app.post("/api/saved" , (req,res) => {
     })
 });
 
-app.delete("/api/saved", (req,res) => {
+app.delete("/saved", (req,res) => {
     Article.remove({
       _id: req.body.id
     }).then((doc) => {

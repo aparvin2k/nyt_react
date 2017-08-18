@@ -75,6 +75,7 @@ app.delete("/saved", (req,res) => {
   });
 
 app.get("/", function(req, res, next) {
+  console.log("getting home page");
   res.sendFile(path.resolve(__dirname, "./public/index.html"));
 });
 
