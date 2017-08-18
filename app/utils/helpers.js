@@ -13,8 +13,8 @@ const Helpers = {
 		}
 		return axios.get(queryURL);
 	},
-	saveArticle: (title, url) => {
-		return axios.post('/saved', {title: title, url: url});
+	saveArticle: (title, url, body) => {
+		return axios.post('/saved', {title: title, url: url, body:body});
 	},
 	getSaved: () => {
 	return axios.get('/saved');

@@ -14,8 +14,8 @@ var routes = (
     <Router history={browserHistory}>
       <Route path="/" component={Main}>
         <Route path="Search" component={Search} />
-        <Route path="Results" component={Results} />
-        <Route path="Saved" component={Saved} />
+  
+        <Route path="/saved" component={Saved} />
         <IndexRoute component={Search} />
       </Route>
     </Router>

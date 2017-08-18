@@ -8,50 +8,51 @@ class Results extends React.Component {
 		this.state = {
 			articles: []
 		}
-		this.renderArticles = this.renderArticles.bind(this);
+		this.handleButtonClick = this.handleButtonClick.bind(this);
 	}
 	componentWillReceiveProps(nextProps) {
-		console.log("getting articles");
-		Helpers.getArticles(nextProps.topic, nextProps.startYear, nextProps.endYear).then((res) => {
-			this.setState({articles: res.data.response.docs});
-		});
+			this.setState({articles: this.props.articles});
+	
 	}
-
+	handleButtonClick() {
+		console.log("click");
+		console.log(this.event);
+		
+	}
 	render() {
 		return (
-			<div className="container-fluid">
-				<div className="panel panel-default">
-				  	<div className="panel-heading">
-				    	<h3 className="panel-title">Results</h3>
-				  	</div>
-				  	<div className="panel-body">
-						<div key={i}>
-						    {this.state.articles.map((article, i) => (
-						    	<div className="panel panel-default">
-						  			<div className="panel-heading">
-						    			<h3 className="panel-title">{article.title}</h3>
-						  			</div>
-						  			<div className="panel-body">
-						        		<p>{article.body}</p>
-						        		<h4 id="resultListing">
-						    				<a href={article.web_url} target="_blank">{article.headline.main}</a>
-												<br />
-												<button
-							    				id="saveButton"
-							    				className="btn btn-primary"
-							    				onClick={this.saveArticle}
-							    			>
-							    				Save
-							    			</button>
-	    								</h4>
-						        	</div>
-						      </div>
-						    ))}
-				    	</div>
-				  	</div>
-				</div>
-			</div>
-		);
+	      <div className="panel panel-default">
+	        <div className="panel-heading">
+	          <h3 className="panel-title text-center">Search History</h3>
+	        </div>
+	        <div className="panel-body text-center">
+
+	          {/* Here we use a map function to loop through an array in JSX */}
+
+			{this.props.articles.map((search, i) => {
+			      return (
+			      	<div className="panel panel-default" key={i}>
+			    			<div className="panel-heading">
+			     				<h3 className="panel-title text-center">{search.headline.main}</h3>
+			    			</div>
+			    			<div className="panel-body text-center">
+			​
+			       			<p>{search.snippet}</p>
+			       			<div id={i}>
+										<button
+											onClick={this.handleButtonClick}
+											className="btn btn-success">
+											Save
+										</button>
+									</div>
+			​
+			        	</div>
+			   			</div>
+			      );
+			     })}
+	        </div>
+	      </div>
+	    );
 	}
 }
 
