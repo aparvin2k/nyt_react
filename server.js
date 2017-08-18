@@ -45,7 +45,7 @@ app.get("/saved" , (req,res) => {
             console.log(err)
         }
         else{
-            res.send(doc)
+            res.json(doc)
         }
     });
 });
@@ -65,12 +65,10 @@ app.post("/saved" , (req,res) => {
 });
 
 app.delete("/saved", (req,res) => {
-    Article.remove({
-      _id: req.body.id
-    }).then((doc) => {
-      res.send(doc);
-    }).catch((err) => {
-      res.send(err);
+    console.log(req.body._id)
+    Articles.findByIdAndRemove({ _id: req.body._id },(err, doc) => {
+    if (err) console.log(err);
+    else res.send(doc);
     });
   });
 

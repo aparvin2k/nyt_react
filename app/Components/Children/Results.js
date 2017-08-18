@@ -10,20 +10,23 @@ class Results extends React.Component {
 		}
 		this.handleButtonClick = this.handleButtonClick.bind(this);
 	}
-	componentWillReceiveProps(nextProps) {
-			this.setState({articles: this.props.articles});
+	componentWillReceiveProps() {
+		this.setState({articles: this.props.articles});
 	
 	}
-	handleButtonClick() {
-		console.log("click");
-		console.log(this.event);
+	handleButtonClick(event) {
+		console.log("click save");
+		console.log(event);
+		var g = event.target.id;
+		console.log("var g: " + g);
+		Helpers.saveArticle(this.props.articles[g].headline.main, this.props.articles[g].web_url, this.props.articles[g].snippet);
 		
 	}
 	render() {
 		return (
 	      <div className="panel panel-default">
 	        <div className="panel-heading">
-	          <h3 className="panel-title text-center">Search History</h3>
+	          <h3 className="panel-title text-center">Search Results</h3>
 	        </div>
 	        <div className="panel-body text-center">
 
@@ -37,11 +40,11 @@ class Results extends React.Component {
 			    			</div>
 			    			<div className="panel-body text-center">
 			​
-			       			<p>{search.snippet}</p>
+			       			{search.snippet}
 			       			<div id={i}>
-										<button
+										<button id={i}
 											onClick={this.handleButtonClick}
-											className="btn btn-success">
+											className="btn btn-success" value={i}>
 											Save
 										</button>
 									</div>

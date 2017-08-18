@@ -20,6 +20,7 @@ const Helpers = {
 	return axios.get('/saved');
 	},
 	deleteArticle: (id) => {
+		console.log(id);
 		return axios.delete('/saved', {_id: id});
 	},
 };
