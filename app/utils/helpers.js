@@ -21,7 +21,7 @@ const Helpers = {
 	},
 	deleteArticle: (id) => {
 		console.log(id);
-		return axios.delete('/saved', {_id: id});
+		return axios.delete('/saved', { _id: id});
 	},
 };
 
