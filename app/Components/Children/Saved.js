@@ -1,6 +1,6 @@
 import React from 'react';
 import Helpers from '../../utils/helpers';
-import deletePanel from '../panels/deletePanel';
+
 
 class Saved extends React.Component {
 	constructor(props) {
