@@ -3,8 +3,16 @@
 New York Times Web Scraping
 
  ```
-A web app that lets users scrape New York time articles based on a topic of their choosing. They may choose to specify the time period for the scraping as well. This app uses MongoDb and React.
+React-based rendition of the New York Times Article Search application. This assignment requires
+you to create React components, work with helper functions, and utilize the React mounting lifecycle 
+to query and display articles based on user searches. You'll also use Node, Express and MongoDB so 
+that users can save articles to read later
  ```
+ 
+### Preview Site
+
+https://cryptic-dusk-11132.herokuapp.com/
+
 
 ### Getting Started
 
